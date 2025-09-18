@@ -1,6 +1,7 @@
 package com.BIProject.Laborex.Controller.TABLEAU_BORD;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +13,7 @@ import com.BIProject.Laborex.Service.TABLEAU_BORD.TableauBordService;
 
 @RestController
 @RequestMapping("/api")
+@PreAuthorize("hasAnyRole('DG','TRANSIT','COMMERCIAL')")
 public class TableauBordController {
 	@Autowired public TableauBordService service;
 	@GetMapping("/tableau-bord")

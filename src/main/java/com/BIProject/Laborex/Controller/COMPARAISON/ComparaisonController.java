@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import com.BIProject.Laborex.Service.COMPARAISON.AnalysePrixService;
 
 @RestController
 @RequestMapping("/api/comparaisons")
+@PreAuthorize("hasRole('TRANSIT')")
 public class ComparaisonController {
 	@Autowired public AnalysePrixService priceAnalysisService;
 	@GetMapping("/analyse-complete")
